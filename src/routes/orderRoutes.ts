@@ -25,5 +25,5 @@ export default async function orderRoutes(fastify: FastifyInstance) {
   fastify.delete('/orders/:id', deleteOrder)
 
   // Get orders by user ID
-  fastify.get('/users/:uid/orders', getOrdersByUserId)
+  fastify.get('/orders/uid/:uid', getOrdersByUserId)
 }

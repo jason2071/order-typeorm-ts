@@ -28,23 +28,6 @@ export const getAllUsers = async (request: FastifyRequest, reply: FastifyReply) 
   }
 }
 
-// Get user by ID
-export const getUserById = async (request: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) => {
-  try {
-    const id = parseInt(request.params.id)
-    const user = await userRepository.findOneBy({ id })
-
-    if (!user) {
-      return customError(request, reply, 404, 'E404', 'User not found')
-    }
-
-    return customSuccess(reply, 'User found', user)
-  } catch (error) {
-    console.log(error)
-    return customError(request, reply, 500, 'E500', 'Failed to retrieve user')
-  }
-}
-
 // Create user
 export const createUser = async (request: FastifyRequest<{ Body: CreateUserDto }>, reply: FastifyReply) => {
   try {
